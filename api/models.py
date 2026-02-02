@@ -8,16 +8,33 @@ class company(models.Model):
     name=models.CharField(max_length=100)
     location=models.CharField(max_length=100)
     about=models.TextField()
-    Type=models.CharField(max_length=50,choices=
-                            (('IT','IT'),
-                            ('Finance','Finance'),
-                            ('Health','Health'),
-                            ('Education','Education')
-                            ))
+   
     Active=models.BooleanField(default=True)
 
     def __str__(self):
         return self.name+"--"+self.location
+
+class division(models.Model):
+    name=models.CharField(max_length=50)
+    company=models.ForeignKey(company,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+class department(models.Model):
+    name=models.CharField(max_length=100,unique=True)
+    division=models.ForeignKey(division,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class position(models.Model):
+    name=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
 
 #employee model
 class employee(models.Model):
@@ -26,12 +43,12 @@ class employee(models.Model):
     address=models.CharField(max_length=200)
     phone=models.CharField(max_length=10)
     about=models.TextField()
-    position=models.CharField(max_length=50,choices=(
-                            ('manager','manager'),
-                            ('developer','developer'),
-                            ('tester','tester'),
-                            ('hr','hr'),
-                            ('team lead','team lead')))
+    is_active=models.BooleanField(default=True)
+
+    position=models.ForeignKey(position,on_delete=models.SET_NULL,null=True,blank=True)
+    
+    department=models.ForeignKey(department,on_delete=models.SET_NULL,null=True,blank=True)
+
     
     company=models.ForeignKey(company, on_delete=models.CASCADE)
 
