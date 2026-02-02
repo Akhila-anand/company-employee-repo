@@ -23,8 +23,3 @@ urlpatterns = [
     path("api/v1/",include('api.urls'))
 ]
 
-'''path() → defines a URL route
-   api/v1/" → base URL (API version 1)
-    include("api.urls") → load all URLs from api/urls.py
-    When a user accesses api/v1/companies/, Django looks into api/urls.py for further routing.
-'''
