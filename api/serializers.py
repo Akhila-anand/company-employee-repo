@@ -4,7 +4,7 @@ from .models import company,employee, division, department, position
 
 class divisionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Division
+        model = division
         fields = '__all__'
 
 

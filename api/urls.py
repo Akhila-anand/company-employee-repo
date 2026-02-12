@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import companyviewset,employeeviewset
+from .views import companyviewset,employeeviewset,positionviewset,divisionviewset,departmentviewset
 from rest_framework import routers
 
 
@@ -9,7 +9,7 @@ from rest_framework import routers
 router= routers.DefaultRouter()
 router.register(r'companies',companyviewset)
 router.register(r'employees',employeeviewset)
-router.register(r'divisions', divisionViewSet)
+router.register(r'divisions', divisionviewset)
 router.register(r'departments', departmentviewset)
 router.register(r'positions', positionviewset)
 

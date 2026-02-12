@@ -9,7 +9,7 @@ from rest_framework.filters import SearchFilter
 from .models import company,employee, division, department, position
 from .serializers import companyserializers,employeeserializers,divisionSerializer,departmentSerializer,positionSerializer
 
-class divisionViewSet(viewsets.ModelViewSet):
+class divisionviewset(viewsets.ModelViewSet):
   queryset = division.objects.all()
   serializer_class = divisionSerializer
 
@@ -17,7 +17,7 @@ class departmentviewset(viewsets.ModelViewSet):
   queryset=department.objects.all()
   serializer_class=departmentSerializer
 
-class positionviewset(viewsets.ModelViewSet)::
+class positionviewset(viewsets.ModelViewSet):
   queryset=position.objects.all()
   serializer_class=positionSerializer
 
